@@ -68,7 +68,7 @@ export const Navbar = () => {
                             <a
                                 key={link.name}
                                 href={link.href}
-                                className="text-slate-600 hover:text-blue-600 font-medium transition-colors relative group"
+                                className="text-brand-text-secondary hover:text-blue-600 font-medium transition-colors relative group"
                             >
                                 {link.name}
                                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
@@ -106,7 +106,7 @@ export const Navbar = () => {
                                 <a
                                     key={link.name}
                                     href={link.href}
-                                    className="text-slate-600 hover:text-blue-600 font-medium block"
+                                    className="text-brand-text-secondary hover:text-blue-600 font-medium block"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                     {link.name}

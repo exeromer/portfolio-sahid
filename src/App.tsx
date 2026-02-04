@@ -4,7 +4,7 @@ import { Projects } from './components/sections/Projects';
 
 function App() {
   return (
-    <div className="antialiased bg-slate-50 text-slate-900">
+    <div className="antialiased bg-brand-bg text-brand-text-primary">
       <Navbar />
       <main>
         <Hero />

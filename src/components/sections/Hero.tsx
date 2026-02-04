@@ -22,7 +22,7 @@ export const Hero = () => {
         };
 
     return (
-        <section id="hero" className="min-h-screen flex items-center justify-center pt-20 bg-linear-to-br from-slate-50 to-slate-100 overflow-hidden relative">
+        <section id="hero" className="min-h-screen flex items-center justify-center pt-20 bg-linear-to-br from-brand-bg to-slate-100 overflow-hidden relative">
             <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
             <div className="absolute top-20 right-10 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
             <div className="container mx-auto px-6 relative z-10">
@@ -52,7 +52,7 @@ export const Hero = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 }}
-                        className="text-5xl md:text-7xl font-bold text-slate-900 mb-6 tracking-tight"
+                        className="text-5xl md:text-7xl font-bold text-brand-text-primary mb-6 tracking-tight"
                     >
                         Transformando ideas en <br />
                         <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-600">
@@ -64,7 +64,7 @@ export const Hero = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto"
+                        className="text-xl text-brand-text-secondary mb-10 leading-relaxed max-w-2xl mx-auto"
                     >
                         {profileData.bio}
                     </motion.p>
@@ -83,7 +83,7 @@ export const Hero = () => {
                         </a>
                         <a
                             href="#contact"
-                            className="w-full sm:w-auto px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-lg font-semibold hover:bg-slate-50 transition-all transform hover:-translate-y-1"
+                            className="w-full sm:w-auto px-8 py-4 bg-white text-slate-700 border border-brand-border rounded-lg font-semibold hover:bg-brand-bg transition-all transform hover:-translate-y-1"
                         >
                             Contactar
                         </a>
@@ -94,10 +94,10 @@ export const Hero = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.8, delay: 0.5 }}
-                        className="mt-16 pt-8 border-t border-slate-200"
+                        className="mt-16 pt-8 border-t border-brand-border "
                     >
                         <p className="text-sm text-slate-500 mb-4 font-medium">TECH STACK PRINCIPAL</p>
-                        <div className="flex flex-wrap justify-center gap-8 opacity-70">
+                        <div className="flex flex-wrap justify-center gap-18 opacity-70">
                             {profileData.skills.slice(0, 5).map((skill) => (
                                 <motion.div
                                     key={skill}
