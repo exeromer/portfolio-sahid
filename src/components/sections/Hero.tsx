@@ -94,15 +94,15 @@ export const Hero = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.8, delay: 0.5 }}
-                        className="mt-16 pt-8 border-t border-brand-border "
+                        className="mt-16 pt-8 mb-12 border-t border-brand-border "
                     >
-                        <p className="text-sm text-slate-500 mb-4 font-medium">TECH STACK PRINCIPAL</p>
-                        <div className="flex flex-wrap justify-center gap-18 opacity-70">
+                        <p className="text text-slate-500 mb-12 font-medium">TECH STACK PRINCIPAL</p>
+                        <div className="flex flex-wrap justify-center gap-16 opacity-70">
                             {profileData.skills.slice(0, 5).map((skill) => (
                                 <motion.div
                                     key={skill}
                                     whileHover={{ scale: 1.1, opacity: 1, y: -5 }}
-                                    className="flex flex-col items-center gap-2 cursor-pointer group"
+                                    className="flex flex-col items-center gap-2 cursor-pointer group w-12 h-12"
                                 >
                                     <div className="text-slate-400 group-hover:text-blue-600 transition-colors duration-300">
                                         {techIcons[skill] || <span className="font-semibold">{skill}</span>}
@@ -114,7 +114,6 @@ export const Hero = () => {
                             ))}
                         </div>
                     </motion.div>
-
                 </div>
             </div>
         </section>
