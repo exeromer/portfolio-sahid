@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useTypewriter } from '../../hooks/useTypeWriter';
 import { techIcons } from '../../data/icons';
+import Particles from '../ui/Particles';
 
 const skillCategories = [
   {
@@ -35,27 +36,43 @@ const itemVariants = {
 
 export const Skills = () => {
   const { text } = useTypewriter(
-    ["Full Stack Developer", "Backend Specialist", "React Enthusiast", "Team Lead"], 
-    150, 
-    50,  
-    2000 
+    ["Full Stack Developer", "Backend Specialist", "React Enthusiast", "Team Lead"],
+    150,
+    50,
+    2000
   );
 
   return (
-    <section id="skills" className="py-24 bg-slate-900 text-white overflow-hidden relative">
+    <section id="skills" className="py-24 bg-[#0f111a] text-white overflow-hidden relative">
       <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#4b5563 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
 
+      <div className="absolute inset-0 z-0">
+        <Particles
+          particleCount={300} 
+          particleSpread={10}
+          speed={0.1}
+          particleColors={["#fbdff4", "#7a68fd", "#c575ea"]}
+          moveParticlesOnHover={true}
+          particleHoverFactor={2}
+          alphaParticles={false}
+          particleBaseSize={100}
+          sizeRandomness={0.5}
+          cameraDistance={20}
+          disableRotation={false}
+          className="w-full h-full"
+        />
+      </div>
       <div className="container mx-auto px-6 relative z-10">
-        
+
         <div className="text-center mb-20 min-h-30">
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-slate-300">
             Competencias Técnicas
           </h2>
           <div className="text-4xl md:text-6xl font-bold h-20 flex justify-center items-center">
-             <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-emerald-400">
-               {text}
-             </span>
-             <span className="animate-blink text-blue-400 ml-1">|</span>
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-emerald-400">
+              {text}
+            </span>
+            <span className="animate-blink text-blue-400 ml-1">|</span>
           </div>
         </div>
 
@@ -70,13 +87,13 @@ export const Skills = () => {
               variants={containerVariants}
               className="bg-slate-800/50 backdrop-blur-sm p-8 rounded-2xl border border-slate-700 hover:border-blue-500/50 transition-colors group"
             >
-              <h3 className="text-xl font-bold mb-8 text-slate-200 group-hover:text-blue-400 transition-colors border-b border-slate-700 pb-4">
+              <h3 className="text-xl font-bold mb-8 text-slate-200 group-hover:text-blue-400 transition-colors border-b border-slate-700 pb-4 cursor-default">
                 {category.title}
               </h3>
-              
+
               <div className="grid grid-cols-2 gap-6">
                 {category.skills.map((skill) => (
-                  <motion.div 
+                  <motion.div
                     key={skill}
                     variants={itemVariants}
                     whileHover={{ scale: 1.05, x: 5 }}
@@ -86,7 +103,7 @@ export const Skills = () => {
                     <div className="w-10 h-10 p-1 bg-slate-700/50 rounded-lg text-slate-400 group-hover:text-white group-hover:bg-blue-600/30 transition-all duration-300 shadow-sm group-hover:shadow-blue-500/50">
                       {techIcons[skill] || <div className="w-full h-full bg-slate-500 rounded-full" />}
                     </div>
-                    
+
                     {/* Texto */}
                     <span className="text-slate-400 font-medium group-hover:text-slate-200 transition-colors">
                       {skill}

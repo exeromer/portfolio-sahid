@@ -4,7 +4,7 @@ import { projectsData } from '../../data/profile';
 import type { Project } from '../../types';
 import { Modal } from '../ui/Modal';
 import { ProjectGallery } from '../ui/ProjectGallery';
-
+import MagnetLines from '../ui/MagnetLines';
 
 export const Projects = () => {
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -17,9 +17,21 @@ export const Projects = () => {
     };
 
     return (
-        <section id="projects" className="py-24 bg-white">
-            <div className="container mx-auto px-6">
-
+        <section id="projects" className="py-24 bg-white relative overflow-hidden">
+            <div className="absolute inset-0 z-0 opacity-20 pointer-events-none md:pointer-events-auto">
+                <MagnetLines
+                    rows={20}
+                    columns={20}   
+                    containerSize="150%"
+                    lineColor="#060010" 
+                    lineWidth="1.2px"
+                    lineHeight="35px"
+                    baseAngle={2}
+                    className="w-full h-full -mt-20 -ml-20"
+                    style={{ width: '120%', height: '120%' }}
+                />
+            </div>
+            <div className="container mx-auto px-6 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}

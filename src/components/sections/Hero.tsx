@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { profileData } from '../../data/profile';
 import { cn } from '../../utils/cn';
-import { techIcons } from '../../data/icons';
+import { HeroBackground } from '../ui/Background';
+
 
 export const Hero = () => {
 
@@ -22,9 +23,9 @@ export const Hero = () => {
         };
 
     return (
-        <section id="hero" className="min-h-screen flex items-center justify-center pt-20 bg-linear-to-br from-brand-bg to-slate-100 overflow-hidden relative">
-            <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
-            <div className="absolute top-20 right-10 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+        <section id="hero" className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
+
+            <HeroBackground />
             <div className="container mx-auto px-6 relative z-10">
                 <div className="max-w-4xl mx-auto text-center">
 
@@ -48,74 +49,43 @@ export const Hero = () => {
                         {badgeConfig.text}
                     </motion.div>
 
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.1 }}
-                        className="text-5xl md:text-7xl font-bold text-brand-text-primary mb-6 tracking-tight"
-                    >
-                        Transformando ideas en <br />
-                        <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-600">
-                            Software Escalable
-                        </span>
-                    </motion.h1>
+                    <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight drop-shadow-lg"
+          >
+            Transformando ideas en <br />
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-cyan-300 filter drop-shadow-lg">
+              Software Escalable
+            </span>
+          </motion.h1>
 
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                        className="text-xl text-brand-text-secondary mb-10 leading-relaxed max-w-2xl mx-auto"
-                    >
-                        {profileData.bio}
-                    </motion.p>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl mx-auto drop-shadow-md"
+          >
+            {profileData.bio}
+          </motion.p>
 
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
-                        className="flex flex-col sm:flex-row items-center justify-center gap-4"
-                    >
-                        <a
-                            href="#projects"
-                            className="w-full sm:w-auto px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-1"
-                        >
-                            Ver Proyectos
-                        </a>
-                        <a
-                            href="#contact"
-                            className="w-full sm:w-auto px-8 py-4 bg-white text-slate-700 border border-brand-border rounded-lg font-semibold hover:bg-brand-bg transition-all transform hover:-translate-y-1"
-                        >
-                            Contactar
-                        </a>
-                    </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <a href="#projects" className="w-full sm:w-auto px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition-all shadow-[0_0_20px_rgba(37,99,235,0.5)] hover:shadow-[0_0_30px_rgba(37,99,235,0.7)] transform hover:-translate-y-1">
+              Ver Proyectos
+            </a>
+            <a href="#contact" className="w-full sm:w-auto px-8 py-4 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-lg font-semibold hover:bg-white/20 transition-all transform hover:-translate-y-1">
+              Contactar
+            </a>
+          </motion.div>
 
-                    {/* Tech Stack */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.8, delay: 0.5 }}
-                        className="mt-16 pt-8 mb-12 border-t border-brand-border "
-                    >
-                        <p className="text text-slate-500 mb-12 font-medium">TECH STACK PRINCIPAL</p>
-                        <div className="flex flex-wrap justify-center gap-16 opacity-70">
-                            {profileData.skills.slice(0, 5).map((skill) => (
-                                <motion.div
-                                    key={skill}
-                                    whileHover={{ scale: 1.1, opacity: 1, y: -5 }}
-                                    className="flex flex-col items-center gap-2 cursor-pointer group w-12 h-12"
-                                >
-                                    <div className="text-slate-400 group-hover:text-blue-600 transition-colors duration-300">
-                                        {techIcons[skill] || <span className="font-semibold">{skill}</span>}
-                                    </div>
-                                    <span className="text-xs font-medium text-slate-500 group-hover:text-slate-800 transition-colors">
-                                        {skill}
-                                    </span>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </motion.div>
-                </div>
-            </div>
-        </section>
-    );
+        </div>
+      </div>
+    </section>
+  );
 };
