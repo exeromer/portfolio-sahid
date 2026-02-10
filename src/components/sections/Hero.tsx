@@ -2,66 +2,72 @@ import { motion } from 'framer-motion';
 import { profileData } from '../../data/profile';
 import { cn } from '../../utils/cn';
 import { HeroBackground } from '../ui/Background';
-
+import GradientText from '../ui/GradientText';
+import GlitchText from '../ui/GlitchText';
 
 export const Hero = () => {
 
-    const isAvailable = profileData.status === 'available';
+  const isAvailable = profileData.status === 'available';
 
-    const badgeConfig = isAvailable
-        ? {
-            text: "Disponible para nuevos proyectos",
-            colorClass: "bg-emerald-100 text-emerald-800 border-emerald-200",
-            dotClass: "bg-emerald-500",
-            glowEffect: "shadow-[0_0_20px_rgba(16,185,129,0.4)] border hover:shadow-[0_0_25px_rgba(16,185,129,0.6)]"
-        }
-        : {
-            text: "Trabajando en nuevos proyectos",
-            colorClass: "bg-amber-100 text-amber-800 border-amber-200",
-            dotClass: "bg-amber-500",
-            glowEffect: "shadow-none border"
-        };
+  const badgeConfig = isAvailable
+    ? {
+      text: "Disponible para nuevos proyectos",
+      colorClass: "bg-emerald-100 text-emerald-800 border-emerald-200",
+      dotClass: "bg-emerald-500",
+    }
+    : {
+      text: "Trabajando en nuevos proyectos",
+      colorClass: "bg-amber-100 text-amber-800 border-amber-200",
+      dotClass: "bg-amber-500",
+    };
 
-    return (
-        <section id="hero" className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
+  return (
+    <section id="hero" className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
 
-            <HeroBackground />
-            <div className="container mx-auto px-6 relative z-10">
-                <div className="max-w-4xl mx-auto text-center">
+      <HeroBackground />
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="max-w-4xl mx-auto text-center">
 
-                    <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className={cn(
-                            "inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold mb-8 transition-all duration-300",
-                            badgeConfig.colorClass,
-                            badgeConfig.glowEffect
-                        )}
-                    >
-                        <span className="relative flex h-3 w-3 mr-3">
-                            {isAvailable && (
-                                <span className={cn("animate-ping absolute inline-flex h-full w-full rounded-full opacity-75", badgeConfig.dotClass)}></span>
-                            )}
-                            <span className={cn("relative inline-flex rounded-full h-3 w-3", badgeConfig.dotClass)}></span>
-                        </span>
+          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full text-sm font-semibold mb-8 border"
+            style={{ backgroundColor: badgeConfig.colorClass.split(' ')[0] }}>
+            <span className="relative flex h-3 w-3">
+              {isAvailable ? (
+                <>
+                  <span className={cn("animate-ping absolute inline-flex h-full w-full rounded-full opacity-75", badgeConfig.dotClass)}></span>
+                  <span className={cn("relative inline-flex rounded-full h-3 w-3", badgeConfig.dotClass)}></span>
+                </>
+              ) : (
+                <span className={cn("relative inline-flex rounded-full h-3 w-3", badgeConfig.dotClass)}></span>
+              )}
+            </span>
+            <GradientText
+              colors={["#047857", "#14b8a6", "#22d3ee"]}
+              animationSpeed={2}
+              showBorder={false}
+              className="text-sm font-semibold"
+            >
+              {badgeConfig.text}
+            </GradientText>
+          </div>
 
-                        {badgeConfig.text}
-                    </motion.div>
-
-                    <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight drop-shadow-lg"
           >
             Transformando ideas en <br />
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-cyan-300 filter drop-shadow-lg">
+            <GlitchText
+              speed={1.5} 
+              enableShadows={true}
+              enableOnHover={false} 
+              className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-cyan-300 font-extrabold"
+            >
               Software Escalable
-            </span>
+            </GlitchText>
           </motion.h1>
 
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -70,7 +76,7 @@ export const Hero = () => {
             {profileData.bio}
           </motion.p>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -86,6 +92,6 @@ export const Hero = () => {
 
         </div>
       </div>
-    </section>
+    </section >
   );
 };

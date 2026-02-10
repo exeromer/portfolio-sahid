@@ -60,7 +60,6 @@ export const HeroBackground = () => {
         }}
 
       />
-      {/* Overlay degradado para suavizar la transición hacia abajo */}
       <div className="absolute bottom-0 left-0 w-full h-32 bg-linear-to-t pointer-events-none" />
     </div>
   );

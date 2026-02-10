@@ -1,12 +1,13 @@
 import { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import profileImg from '../../assets/profile-photo.png';
-
+import RotatingText from '../ui/RotatingText';
+import VariableProximity from '../ui/VariableProximity';
 
 export const About = () => {
 
     const ref = useRef<HTMLDivElement>(null);
-
+    const containerRef = useRef<HTMLDivElement>(null);
     const x = useMotionValue(0);
     const y = useMotionValue(0);
 
@@ -35,7 +36,7 @@ export const About = () => {
     };
 
     return (
-        <section id="about" className="py-24 relative overflow-hidden bg-slate-50/50">
+        <section id="about" ref={containerRef} className="py-24 relative overflow-hidden bg-slate-50/50 perspective-1000">
             <div className="container mx-auto px-6">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
 
@@ -111,13 +112,39 @@ export const About = () => {
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="text-center md:text-left"
+                        className="text-center md:text-left md:pl-12"
                     >
-                        <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">
-                            Desarrollo de Software <br />
-                            <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-600">
-                                orientada a sistemas reales.
-                            </span>
+                        {/* VARIABLE PROXIMITY TITLE */}
+                        <h2 className="relative text-3xl md:text-5xl font-bold text-slate-900 mb-6 cursor-default">
+                            <VariableProximity
+                                label="Ingeniería de Software"
+                                className={'variable-proximity-demo'}
+                                fromFontVariationSettings="'wght' 400, 'opsz' 9"
+                                toFontVariationSettings="'wght' 1000, 'opsz' 40"
+                                containerRef={containerRef}
+                                radius={150}
+                                falloff='linear'
+                            />
+                            <br />
+                            <div className="flex items-center justify-center md:justify-start gap-2 mt-2">
+                                <span className="text-slate-500 text-2xl md:text-3xl font-medium">Enfocado en</span>
+
+                                {/* ROTATING TEXT */}
+                                <div className="bg-blue-600/10 px-3 py-1 rounded-lg border border-blue-200">
+                                    <RotatingText
+                                        texts={['sistemas reales.', 'alta escalabilidad.', 'arquitectura limpia.', 'resultados de negocio.']}
+                                        mainClassName="text-2xl md:text-3xl font-bold text-blue-600 overflow-hidden py-0.5"
+                                        staggerFrom="last"
+                                        initial={{ y: "100%" }}
+                                        animate={{ y: 0 }}
+                                        exit={{ y: "-120%" }}
+                                        staggerDuration={0.025}
+                                        splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+                                        transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                                        rotationInterval={3000}
+                                    />
+                                </div>
+                            </div>
                         </h2>
 
                         <div className="space-y-6 text-slate-600 text-lg leading-relaxed">
