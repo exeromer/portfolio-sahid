@@ -1,8 +1,7 @@
 import { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import profileImg from '../../assets/profile-photo.png';
+import profileImg from '../../assets/profile-photo.webp';
 import RotatingText from '../ui/RotatingText';
-import VariableProximity from '../ui/VariableProximity';
 
 export const About = () => {
 
@@ -116,15 +115,7 @@ export const About = () => {
                     >
                         {/* VARIABLE PROXIMITY TITLE */}
                         <h2 className="relative text-3xl md:text-5xl font-bold text-slate-900 mb-6 cursor-default">
-                            <VariableProximity
-                                label="Ingeniería de Software"
-                                className={'variable-proximity-demo'}
-                                fromFontVariationSettings="'wght' 400, 'opsz' 9"
-                                toFontVariationSettings="'wght' 1000, 'opsz' 40"
-                                containerRef={containerRef}
-                                radius={150}
-                                falloff='linear'
-                            />
+                            Ingenieria de Software
                             <br />
                             <div className="flex items-center justify-center md:justify-start gap-2 mt-2">
                                 <span className="text-slate-500 text-2xl md:text-3xl font-medium">Enfocado en</span>

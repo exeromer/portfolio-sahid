@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { profileData } from '../../data/profile';
 import { cn } from '../../utils/cn';
-import { HeroBackground } from '../ui/Background';
+import { HeroBackground } from '../ui/HeroBackground';
 import GradientText from '../ui/GradientText';
 import GlitchText from '../ui/GlitchText';
 

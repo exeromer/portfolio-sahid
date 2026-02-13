@@ -1,20 +1,20 @@
 import type { Project, UserProfile } from '../types';
-import bsHero from '../assets/projects/BuenSabor-Hero.png';
-import bsPrev1 from '../assets/projects/BuenSabor-Preview1.png';
-import bsPrev2 from '../assets/projects/BuenSabor-Preview2.png';
-import bsPrev3 from '../assets/projects/BuenSabor-Preview3.png';
-import bsPrev4 from '../assets/projects/BuenSabor-Preview4.png';
-import asHero from '../assets/projects/Ascend-Hero.png';
-import asPrev from '../assets/projects/Ascend-Preview.png';
-import asPrev1 from '../assets/projects/Ascend-Preview1.png';
-import asPrev2 from '../assets/projects/Ascend-Preview2.png';
-import asPrev3 from '../assets/projects/Ascend-Preview3.png';
-import gtHero from '../assets/projects/Greenthumb-Hero.png';
-import gtPrev from '../assets/projects/Greenthumb-Preview.png';
-import gtPrev1 from '../assets/projects/Greenthumb-Preview1.png';
-import anaHero from '../assets/projects/Ana-Hero.png';
-import anaPrev from '../assets/projects/Ana-Preview.png';
-import anaPrev1 from '../assets/projects/Ana-Preview1.png';
+import bsHero from '../assets/projects/BuenSabor-Hero.webp';
+import bsPrev1 from '../assets/projects/BuenSabor-Preview1.webp';
+import bsPrev2 from '../assets/projects/BuenSabor-Preview2.webp';
+import bsPrev3 from '../assets/projects/BuenSabor-Preview3.webp';
+import bsPrev4 from '../assets/projects/BuenSabor-Preview4.webp';
+import asHero from '../assets/projects/Ascend-Hero.webp';
+import asPrev from '../assets/projects/Ascend-Preview.webp';
+import asPrev1 from '../assets/projects/Ascend-Preview1.webp';
+import asPrev2 from '../assets/projects/Ascend-Preview2.webp';
+import asPrev3 from '../assets/projects/Ascend-Preview3.webp';
+import gtHero from '../assets/projects/Greenthumb-Hero.webp';
+import gtPrev from '../assets/projects/Greenthumb-Preview.webp';
+import gtPrev1 from '../assets/projects/Greenthumb-Preview1.webp';
+import anaHero from '../assets/projects/Ana-Hero.webp';
+import anaPrev from '../assets/projects/Ana-Preview.webp';
+import anaPrev1 from '../assets/projects/Ana-Preview1.webp';
 
 
 export const profileData: UserProfile = {

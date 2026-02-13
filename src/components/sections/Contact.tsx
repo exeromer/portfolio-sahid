@@ -22,19 +22,80 @@ const itemVariants = {
 export const Contact = () => {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [errors, setErrors] = useState<{ name?: string, email?: string, message?: string }>({});
+
+  const validateForm = () => {
+    const newErrors: { name?: string; email?: string; message?: string } = {};
+    let isValid = true;
+
+    if (!formState.name.trim()) {
+      newErrors.name = 'El nombre es requerido';
+      isValid = false;
+    }
+
+    // Regex robusto: texto + @ + texto + . + texto (2+ caracteres)
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (!formState.email.trim()) {
+      newErrors.email = 'El email es requerido';
+      isValid = false;
+    } else if (!emailRegex.test(formState.email)) {
+      newErrors.email = 'Ingresa un email válido (ej: usuario@dominio.com)';
+      isValid = false;
+    }
+
+    if (!formState.message.trim()) {
+      newErrors.message = 'El mensaje no puede estar vacío';
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!validateForm()) return;
     setStatus('loading');
-    setTimeout(() => {
+    setErrorMessage('');
+
+    const API_URL = "https://cvo0twhm2m.execute-api.us-east-1.amazonaws.com/default/portfolio-contact-handler";
+
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          message: formState.message,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Error en el servidor");
+      }
+
       setStatus('success');
       setFormState({ name: '', email: '', message: '' });
       setTimeout(() => setStatus('idle'), 3000);
-    }, 2000);
+
+    } catch (error) {
+      console.error("Error enviando formulario:", error);
+      setStatus('error');
+      setErrorMessage('Hubo un problema al enviar el mensaje. Inténtalo de nuevo.');
+      setTimeout(() => setStatus('idle'), 4000);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormState(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    if (errors[e.target.name as keyof typeof errors]) {
+      setErrors(prev => ({ ...prev, [e.target.name]: undefined }));
+    }
   };
 
   return (
@@ -78,7 +139,7 @@ export const Contact = () => {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            {/* 1. TARJETA DE CV */}
+            {/*  TARJETA DE CV */}
             <motion.div variants={itemVariants}>
               <motion.a
                 href="/cv.pdf"
@@ -105,7 +166,7 @@ export const Contact = () => {
               </motion.a>
             </motion.div>
 
-            {/* 2. Redes y Email */}
+            {/*  Redes y Email */}
             <motion.div variants={itemVariants} className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
               <h3 className="text-xl font-bold text-slate-900 mb-6">Canales Directos</h3>
               <div className="space-y-6">
@@ -158,6 +219,23 @@ export const Contact = () => {
                   </motion.div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-2">¡Mensaje Enviado!</h3>
                   <p className="text-slate-600">Gracias por contactarme. Te responderé a la brevedad.</p>
+                </motion.div>
+              )}
+              {status === 'error' && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  className="absolute inset-0 bg-white/95 backdrop-blur-sm z-20 flex flex-col items-center justify-center text-center p-6">
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-4 text-red-600">
+                    {techIcons.Error}
+                  </motion.div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">Error al enviar el mensaje</h3>
+                  <p className="text-slate-600 mb-4">{errorMessage || 'Algo salió mal.'}</p>
+                  <button onClick={() => setStatus('idle')} className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">Intentar de nuevo o contactar desde canal directo</button>
                 </motion.div>
               )}
             </AnimatePresence>

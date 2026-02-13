@@ -1,13 +1,17 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { projectsData } from '../../data/profile';
 import type { Project } from '../../types';
 import { Modal } from '../ui/Modal';
 import { ProjectGallery } from '../ui/ProjectGallery';
 import MagnetLines from '../ui/MagnetLines';
+import VariableProximity from '../ui/VariableProximity';
+import { MobileNebula } from '../ui/MobileNebula';
 
 export const Projects = () => {
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+
     const themeStyles = {
         blue: { bg: 'bg-blue-50', border: 'border-blue-100', text: 'text-blue-800', bullet: 'text-blue-700' },
         emerald: { bg: 'bg-emerald-50', border: 'border-emerald-100', text: 'text-emerald-800', bullet: 'text-emerald-700' },
@@ -17,19 +21,24 @@ export const Projects = () => {
     };
 
     return (
-        <section id="projects" className="py-24 bg-white relative overflow-hidden">
-            <div className="absolute inset-0 z-0 opacity-20 pointer-events-none md:pointer-events-auto">
-                <MagnetLines
-                    rows={20}
-                    columns={20}   
-                    containerSize="150%"
-                    lineColor="#060010" 
-                    lineWidth="1.2px"
-                    lineHeight="35px"
-                    baseAngle={2}
-                    className="w-full h-full -mt-20 -ml-20"
-                    style={{ width: '120%', height: '120%' }}
-                />
+        <section id="projects" ref={containerRef} className="py-24 bg-white relative overflow-hidden">
+            <div className="absolute inset-0 z-0 ">
+                <div className="lg:hidden absolute inset-0">
+                    <MobileNebula />
+                </div>
+                <div className="hidden lg:block absolute inset-0 z-0 opacity-20 pointer-events-auto">
+                    <MagnetLines
+                        rows={20}
+                        columns={20}
+                        containerSize="150%"
+                        lineColor="#060010"
+                        lineWidth="1.2px"
+                        lineHeight="35px"
+                        baseAngle={2}
+                        className="w-full h-full -mt-20 -ml-20"
+                        style={{ width: '120%', height: '120%' }}
+                    />
+                </div>
             </div>
             <div className="container mx-auto px-6 relative z-10">
                 <motion.div
@@ -38,10 +47,18 @@ export const Projects = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold text-brand-text-primary mb-4">
-                        Proyectos Destacados
+                    <h2 className="relative text-3xl md:text-5xl font-bold text-amber-50 lg:text-slate-900 mb-6 cursor-default">
+                        <VariableProximity
+                            label="Proyectos Destacados"
+                            className={'variable-proximity-demo tracking-tight'}
+                            fromFontVariationSettings="'wght' 400, 'opsz' 9"
+                            toFontVariationSettings="'wght' 1000, 'opsz' 40"
+                            containerRef={containerRef}
+                            radius={150}
+                            falloff='linear'
+                        />
                     </h2>
-                    <p className="text-lg text-brand-text-secondary max-w-2xl mx-auto">
+                    <p className="text-xl text-amber-50 lg:text-brand-text-secondary max-w-2xl mx-auto">
                         Soluciones reales que combinan ingeniería de backend sólida con experiencias de usuario modernas.
                     </p>
                 </motion.div>
