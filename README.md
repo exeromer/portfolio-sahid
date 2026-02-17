@@ -1,73 +1,25 @@
-# React + TypeScript + Vite
+# Sahid Romero - Developer Portfolio (Frontend) 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Demo: [http://portfolio-sahid-web-2026.s3-website-us-east-1.amazonaws.com](http://portfolio-sahid-web-2026.s3-website-us-east-1.amazonaws.com)
 
-Currently, two official plugins are available:
+## 📌 Overview
+This repository contains the frontend implementation of my personal developer portfolio. It is designed with an extreme focus on web performance (Lighthouse FCP < 0.8s), modern 3D UI/UX, and robust End-to-End (E2E) testing.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tech Stack
+* **Framework:** React 18 + TypeScript + Vite
+* **Styling:** Tailwind CSS
+* **Animations & 3D:** Three.js, Framer Motion, GSAP
+* **Testing:** Playwright (E2E)
+* **Infrastructure:** Terraform, AWS S3 (Static Website Hosting)
 
-## React Compiler
+## ⚡ Performance Highlights
+* Implemented aggressive code-splitting (`manualChunks`) to separate heavy 3D libraries from the critical rendering path.
+* Local variable font hosting (`@fontsource`) to eliminate Layout Shifts and reduce DNS lookup times.
+* Achieved near-instant initial loads by isolating main-thread work.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+## 🧪 E2E Testing
+Automated UI testing is implemented using **Playwright** to ensure critical user journeys (like the Contact Serverless workflow) never break in production.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+```bash
+# Run tests with UI
+npm run test:ui
