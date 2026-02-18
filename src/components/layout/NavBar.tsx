@@ -112,7 +112,7 @@ export const Navbar = () => {
                     {/* LOGO */}
                     <a
                         href="#"
-                        className="text-2xl font-bold text-slate-800 tracking-tighter hover:text-blue-600 transition-colors flex gap-0.5"
+                        className="text-2xl font-bold text-slate-600 tracking-tighter hover:text-blue-600 transition-colors flex gap-0.5"
                         onMouseEnter={handleHover}
                     >
                         <span ref={refName} className="text-slate-800" />
@@ -125,7 +125,7 @@ export const Navbar = () => {
                             <a
                                 key={link.name}
                                 href={link.href}
-                                className="text-slate-600 hover:text-blue-600 font-medium transition-colors relative group text-sm"
+                                className="text-slate-600 hover:text-blue-600 font-medium transition-colors relative group text-lg"
                             >
                                 {link.name}
                                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>

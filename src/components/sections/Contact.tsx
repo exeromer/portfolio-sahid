@@ -60,7 +60,7 @@ export const Contact = () => {
     setStatus('loading');
     setErrorMessage('');
 
-    const API_URL = "https://cvo0twhm2m.execute-api.us-east-1.amazonaws.com/default/portfolio-contact-handler";
+    const API_URL = import.meta.env.VITE_API_URL;
 
     try {
       const response = await fetch(API_URL, {

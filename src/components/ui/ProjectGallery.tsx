@@ -119,7 +119,7 @@ export const ProjectGallery = ({ images, title = "Proyecto" }: ProjectGalleryPro
         {/* Botón Móvil */}
         <button
           onClick={() => openLightbox(0)}
-          className="md:hidden w-full py-3 bg-slate-50 text-brand-text-secondary text-sm font-semibold border-t border-brand-border hover:bg-slate100transition-colors flex items-center justify-center gap-2"
+          className="md:hidden w-full py-3 bg-slate-50 text-brand-text-secondary text-sm font-semibold border-t border-brand-border hover:bg-slate-100 transition-colors flex items-center justify-center gap-2"
         >
           Ver todas ({images.length})
         </button>

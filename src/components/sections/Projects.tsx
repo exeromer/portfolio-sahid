@@ -21,7 +21,7 @@ export const Projects = () => {
     };
 
     return (
-        <section id="projects" ref={containerRef} className="py-24 bg-white relative overflow-hidden">
+        <section id="projects" className="py-24 bg-white relative overflow-hidden">
             <div className="absolute inset-0 z-0 ">
                 <div className="lg:hidden absolute inset-0">
                     <MobileNebula />
@@ -42,12 +42,13 @@ export const Projects = () => {
             </div>
             <div className="container mx-auto px-6 relative z-10">
                 <motion.div
+                    ref={containerRef}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="relative text-3xl md:text-5xl font-bold text-amber-50 lg:text-slate-900 mb-6 cursor-default">
+                    <h2 className="relative text-3xl md:text-5xl text-amber-50 lg:text-slate-900 mb-6 cursor-default">
                         <VariableProximity
                             label="Proyectos Destacados"
                             className={'variable-proximity-demo tracking-tight'}

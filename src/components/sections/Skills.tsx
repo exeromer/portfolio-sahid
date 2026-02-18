@@ -10,7 +10,7 @@ const skillCategories = [
   },
   {
     title: "Backend & Data",
-    skills: ["Java", "Spring Boot", "SQL", "MySQL"]
+    skills: ["Java", "Spring Boot", "MariaDB", "MySQL"]
   },
   {
     title: "Cloud & DevOps",
@@ -18,7 +18,6 @@ const skillCategories = [
   }
 ];
 
-// Variantes para animación en cascada
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {

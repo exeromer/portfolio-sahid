@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import profileImg from '../../assets/profile-photo.webp';
 import RotatingText from '../ui/RotatingText';
+import Particles from '../ui/Particles';
 
 export const About = () => {
 
@@ -36,7 +37,22 @@ export const About = () => {
 
     return (
         <section id="about" ref={containerRef} className="py-24 relative overflow-hidden bg-slate-50/50 perspective-1000">
-            <div className="container mx-auto px-6">
+            <div className="absolute inset-0 z-0 pointer-events-none">
+                <Particles
+                    particleCount={200}
+                    particleSpread={10}
+                    speed={0.1}
+                    particleColors={["#6d74d9", "#6d74d9", "#a53bde"]}
+                    moveParticlesOnHover={false}
+                    particleHoverFactor={0.6}
+                    alphaParticles={false}
+                    particleBaseSize={80}
+                    sizeRandomness={0.6}
+                    cameraDistance={24}
+                    disableRotation={false}
+                />
+            </div>
+            <div className="container mx-auto px-6 relative z-10">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
 
                     {/* Columna Izquierda */}
