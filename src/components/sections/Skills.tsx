@@ -64,10 +64,10 @@ export const Skills = () => {
       <div className="container mx-auto px-6 relative z-10">
 
         <div className="text-center mb-20 min-h-30">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-slate-300">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">
             Competencias Técnicas
           </h2>
-          <div className="text-4xl md:text-6xl font-bold h-20 flex justify-center items-center">
+          <div className="text-3xl md:text-5xl font-bold h-16 flex justify-center items-center">
             <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-emerald-400">
               {text}
             </span>

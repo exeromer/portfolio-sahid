@@ -40,4 +40,16 @@ test.describe('Formulario de Contacto', () => {
     expect(isValid).toBeFalsy(); // Esperamos que sea Falso (inválido)
   });
 
+  test('El enlace de "Descargar Currículum" apunta a un PDF existente', async ({ page, request }) => {
+    await page.goto('http://localhost:5173/');
+
+    const cvLink = page.getByRole('link', { name: /Descargar Currículum/i });
+    const href = await cvLink.getAttribute('href');
+    expect(href).toBeTruthy();
+
+    const response = await request.get(new URL(href as string, page.url()).toString());
+    expect(response.ok()).toBeTruthy();
+    expect(response.headers()['content-type']).toContain('application/pdf');
+  });
+
 });

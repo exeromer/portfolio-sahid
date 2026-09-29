@@ -12,12 +12,12 @@ export const Hero = () => {
   const badgeConfig = isAvailable
     ? {
       text: "Disponible para nuevos proyectos",
-      colorClass: "bg-emerald-100 text-emerald-800 border-emerald-200",
+      colorClass: "bg-emerald-500/10 border-emerald-400/30",
       dotClass: "bg-emerald-500",
     }
     : {
       text: "Trabajando en nuevos proyectos",
-      colorClass: "bg-amber-100 text-amber-800 border-amber-200",
+      colorClass: "bg-amber-500/10 border-amber-400/30",
       dotClass: "bg-amber-500",
     };
 
@@ -25,11 +25,12 @@ export const Hero = () => {
     <section id="hero" className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
 
       <HeroBackground />
+      {/* Degradado para legibilidad del texto sobre el fondo animado */}
+      <div className="absolute inset-0 z-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.75)_0%,rgba(0,0,0,0.35)_55%,transparent_80%)]" />
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
 
-          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full text-sm font-semibold mb-8 border"
-            style={{ backgroundColor: badgeConfig.colorClass.split(' ')[0] }}>
+          <div className={cn("inline-flex items-center gap-3 px-4 py-2 rounded-full text-sm font-semibold mb-8 border backdrop-blur-sm", badgeConfig.colorClass)}>
             <span className="relative flex h-3 w-3">
               {isAvailable ? (
                 <>
@@ -50,6 +51,15 @@ export const Hero = () => {
             </GradientText>
           </div>
 
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-lg md:text-2xl font-semibold text-slate-200 mb-4 tracking-wide"
+          >
+            {profileData.name} <span className="text-blue-400">·</span> {profileData.role}
+          </motion.p>
+
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -60,7 +70,8 @@ export const Hero = () => {
             <GlitchText
               speed={1.5} 
               enableShadows={true}
-              enableOnHover={false} 
+              enableOnHover={true}
+              introDuration={3200}
               className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-cyan-300 font-extrabold"
             >
               Software Escalable

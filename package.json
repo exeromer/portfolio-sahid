@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "@fontsource-variable/roboto-flex": "^5.2.8",
-    "@fontsource/onest": "^5.2.11",
-    "@fontsource/roboto-flex": "^5.2.8",
     "@tailwindcss/vite": "^4.1.18",
     "clsx": "^2.1.1",
     "framer-motion": "^12.31.0",
