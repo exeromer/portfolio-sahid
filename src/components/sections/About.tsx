@@ -83,7 +83,7 @@ export const About = () => {
                                 className="absolute inset-2 rounded-full overflow-hidden shadow-2xl border-4 border-white bg-slate-200 flex items-center justify-center"
                                 style={{ transform: "translateZ(20px)" }}
                             >
-                                <img src={profileImg} className="w-full h-full object-cover" />
+                                <img src={profileImg} alt="Foto de Sahid Romero" className="w-full h-full object-cover" />
 
                             </div>
                             {/* --- CAPA 2 --- */}
@@ -131,16 +131,16 @@ export const About = () => {
                     >
                         {/* VARIABLE PROXIMITY TITLE */}
                         <h2 className="relative text-3xl md:text-5xl font-bold text-slate-900 mb-6 cursor-default">
-                            Ingenieria de Software
+                            Ingeniería de Software
                             <br />
-                            <div className="flex items-center justify-center md:justify-start gap-2 mt-2">
+                            <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-2 mt-2">
                                 <span className="text-slate-500 text-2xl md:text-3xl font-medium">Enfocado en</span>
 
                                 {/* ROTATING TEXT */}
                                 <div className="bg-blue-600/10 px-3 py-1 rounded-lg border border-blue-200">
                                     <RotatingText
                                         texts={['sistemas reales.', 'alta escalabilidad.', 'arquitectura limpia.', 'resultados de negocio.']}
-                                        mainClassName="text-2xl md:text-3xl font-bold text-blue-600 overflow-hidden py-0.5"
+                                        mainClassName="text-2xl md:text-3xl font-bold text-blue-600 overflow-hidden py-0.5 whitespace-nowrap"
                                         staggerFrom="last"
                                         initial={{ y: "100%" }}
                                         animate={{ y: 0 }}
@@ -157,6 +157,9 @@ export const About = () => {
                         <div className="space-y-6 text-slate-600 text-lg leading-relaxed">
                             <p className="border-l-4 border-blue-500 pl-6 italic text-slate-700 font-medium text-left">
                                 Diseño y desarrollo software con foco en arquitectura, mantenibilidad y rendimiento.
+                            </p>
+
+                            <p>
                                 Mi formación en la <strong>UTN</strong> me dio una base sólida en fundamentos, y mi experiencia
                                 en proyectos reales me enseñó a tomar decisiones técnicas con impacto en producción.
                             </p>
@@ -168,7 +171,7 @@ export const About = () => {
                             </p>
 
                             <p>
-                                Entiendo una query SQL mal optimizada, un contrato de API deficiente o un modelo
+                                Entiendo que una query SQL mal optimizada, un contrato de API deficiente o un modelo
                                 de datos incorrecto terminan afectando directamente el rendimiento, la complejidad
                                 del código y la UI.
                             </p>

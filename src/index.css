@@ -65,6 +65,11 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Evita que la navbar fija tape el título al navegar por anclas */
+section[id] {
+  scroll-margin-top: 4rem;
+}
+
 body {
   @apply bg-brand-bg text-brand-text-primary antialiased;
   overflow-x: hidden;

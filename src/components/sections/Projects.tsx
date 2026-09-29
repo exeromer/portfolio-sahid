@@ -6,7 +6,6 @@ import { Modal } from '../ui/Modal';
 import { ProjectGallery } from '../ui/ProjectGallery';
 import MagnetLines from '../ui/MagnetLines';
 import VariableProximity from '../ui/VariableProximity';
-import { MobileNebula } from '../ui/MobileNebula';
 
 export const Projects = () => {
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -23,9 +22,6 @@ export const Projects = () => {
     return (
         <section id="projects" className="py-24 bg-white relative overflow-hidden">
             <div className="absolute inset-0 z-0 ">
-                <div className="lg:hidden absolute inset-0">
-                    <MobileNebula />
-                </div>
                 <div className="hidden lg:block absolute inset-0 z-0 opacity-20 pointer-events-auto">
                     <MagnetLines
                         rows={20}
@@ -48,7 +44,7 @@ export const Projects = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="relative text-3xl md:text-5xl text-amber-50 lg:text-slate-900 mb-6 cursor-default">
+                    <h2 className="relative text-3xl md:text-5xl text-slate-900 mb-6 cursor-default">
                         <VariableProximity
                             label="Proyectos Destacados"
                             className={'variable-proximity-demo tracking-tight'}
@@ -59,7 +55,7 @@ export const Projects = () => {
                             falloff='linear'
                         />
                     </h2>
-                    <p className="text-xl text-amber-50 lg:text-brand-text-secondary max-w-2xl mx-auto">
+                    <p className="text-xl text-brand-text-secondary max-w-2xl mx-auto">
                         Soluciones reales que combinan ingeniería de backend sólida con experiencias de usuario modernas.
                     </p>
                 </motion.div>
@@ -93,11 +89,11 @@ export const Projects = () => {
                                     <h3 className="text-2xl font-bold text-brand-text-primary group-hover:text-blue-600 transition-colors">
                                         {project.title}
                                     </h3>
-                                    {project.featured && (
-                                        <span className="px-2 py-1 bg-amber-100 text-amber-700 text-xs font-bold rounded uppercase tracking-wide">
-                                            Star
+                                    {project.featured ? (
+                                        <span className="shrink-0 ml-3 px-2 py-1 bg-amber-100 text-amber-700 text-xs font-bold rounded uppercase tracking-wide">
+                                            Destacado
                                         </span>
-                                    )}
+                                    ) : null}
                                 </div>
 
                                 <div className="grow">

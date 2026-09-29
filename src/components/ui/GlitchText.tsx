@@ -5,6 +5,8 @@ interface GlitchTextProps {
   speed?: number
   enableShadows?: boolean
   enableOnHover?: boolean
+  /** Glitch breve al montar (ms). 0 = desactivado. Solo aplica con enableOnHover. */
+  introDuration?: number
   className?: string
 }
 
@@ -13,11 +15,21 @@ const GlitchText: FC<GlitchTextProps> = ({
   speed = 0.5,
   enableShadows = true,
   enableOnHover = false,
+  introDuration = 0,
   className = "",
 }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const [isHovered, setIsHovered] = useState(false)
   const [frame, setFrame] = useState(0)
+  const [isIntroPlaying, setIsIntroPlaying] = useState(introDuration > 0)
+
+  useEffect(() => {
+    if (introDuration <= 0) {
+      return
+    }
+    const timeout = setTimeout(() => setIsIntroPlaying(false), introDuration)
+    return () => clearTimeout(timeout)
+  }, [introDuration])
 
   const clipPaths = [
     "inset(10% 0 85% 0)",
@@ -42,7 +54,7 @@ const GlitchText: FC<GlitchTextProps> = ({
     "inset(8% 0 82% 0)",
   ]
 
-  const shouldAnimate = enableOnHover ? isHovered : true
+  const shouldAnimate = enableOnHover ? isHovered || isIntroPlaying : true
 
   useEffect(() => {
     if (!shouldAnimate) {
@@ -60,7 +72,6 @@ const GlitchText: FC<GlitchTextProps> = ({
   const containerStyle: React.CSSProperties = {
     position: "relative",
     display: "inline-block",
-    cursor: "pointer",
     userSelect: "none",
   }
 
@@ -87,7 +98,7 @@ const GlitchText: FC<GlitchTextProps> = ({
   const afterIndex = frame
   const beforeIndex = (frame + 10) % clipPaths.length
 
-  const showLayers = enableOnHover ? isHovered : true
+  const showLayers = shouldAnimate
 
   const afterStyle: React.CSSProperties = {
     ...layerBaseStyle,
@@ -113,8 +124,6 @@ const GlitchText: FC<GlitchTextProps> = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       ref={containerRef}
-      role="button"
-      tabIndex={0}
       style={containerStyle}
     >
       <span style={textStyle}>{children}</span>

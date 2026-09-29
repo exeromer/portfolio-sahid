@@ -1,7 +1,7 @@
 import { techIcons } from "../../data/icons";
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import ScrollReveal from "../ui/ScrollReveal";
+import { CV_FILENAME, CV_URL } from "../../data/profile";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -103,19 +103,15 @@ export const Contact = () => {
       <div className="container mx-auto px-6 relative z-10">
 
         <div className="text-center mb-16 flex flex-col items-center">
-          {/* SCROLL REVEAL TEXT */}
-          <ScrollReveal
-            baseOpacity={0}
-            enableBlur={true}
-            baseRotation={5}
-            blurStrength={10}
-            rotationEnd="bottom center"
-            wordAnimationEnd="bottom center"
-            containerClassName="max-w-3xl"
-            textClassName="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
+          <motion.h2
+            initial={{ opacity: 0, y: 20, filter: 'blur(8px)' }}
+            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl text-4xl md:text-5xl font-bold text-slate-900"
           >
             Hablemos de tu próximo proyecto
-          </ScrollReveal>
+          </motion.h2>
 
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -142,8 +138,8 @@ export const Contact = () => {
             {/*  TARJETA DE CV */}
             <motion.div variants={itemVariants}>
               <motion.a
-                href="/cv.pdf"
-                download="CV_Sahid_Romero.pdf"
+                href={CV_URL}
+                download={CV_FILENAME}
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 className="group relative block cursor-pointer"
@@ -173,7 +169,8 @@ export const Contact = () => {
                 {[
                   { href: "mailto:sahidromer@gmail.com", label: "sahidromer@gmail.com", icon: techIcons.Mail },
                   { href: "https://linkedin.com/in/sahidr", label: "linkedin.com/in/sahidr", icon: techIcons.Linkedin },
-                  { href: "https://github.com/exeromer", label: "github.com/exeromer", icon: techIcons.GitHub }
+                  { href: "https://github.com/exeromer", label: "github.com/exeromer", icon: techIcons.GitHub },
+                  { href: "https://wa.me/5492616686349", label: "WhatsApp", icon: techIcons.WhatsApp }
                 ].map((item, index) => (
                   <motion.a
                     key={index}

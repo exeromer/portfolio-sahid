@@ -4,11 +4,13 @@ import { gsap } from 'gsap';
 import { useScroll } from '../../hooks/useScroll';
 import { cn } from '../../utils/cn';
 import { useScramble } from 'use-scramble';
+import { CV_FILENAME, CV_URL } from '../../data/profile';
 
 const navLinks = [
     { name: 'Inicio', href: '#hero' },
-    { name: 'Proyectos', href: '#projects' },
     { name: 'Sobre mí', href: '#about' },
+    { name: 'Experiencia', href: '#experience' },
+    { name: 'Proyectos', href: '#projects' },
     { name: 'Contacto', href: '#contact' },
 ];
 
@@ -25,6 +27,7 @@ export const Navbar = () => {
         seed: 0,
         chance: 1,
         overdrive: false,
+        playOnMount: false,
     });
     const { ref: refDomain, replay: replayDomain } = useScramble({
         text: ".dev",
@@ -35,6 +38,7 @@ export const Navbar = () => {
         seed: 0,
         chance: 1,
         overdrive: false,
+        playOnMount: false,
     });
     
     const handleHover = () => {
@@ -112,25 +116,36 @@ export const Navbar = () => {
                     {/* LOGO */}
                     <a
                         href="#"
-                        className="text-2xl font-bold text-slate-600 tracking-tighter hover:text-blue-600 transition-colors flex gap-0.5"
+                        className="text-2xl font-bold tracking-tighter hover:text-blue-600 transition-colors flex gap-0.5"
                         onMouseEnter={handleHover}
+                        aria-label="Sahid.dev - Inicio"
                     >
-                        <span ref={refName} className="text-slate-800" />
-                        <span ref={refDomain} className="text-blue-600" />
+                        <span ref={refName} className={cn("transition-colors", isScrolled ? "text-slate-800" : "text-white")} />
+                        <span ref={refDomain} className={isScrolled ? "text-blue-600" : "text-blue-400"} />
                     </a>
 
                     {/* DESKTOP MENU  */}
-                    <div className="hidden md:flex space-x-8">
+                    <div className="hidden md:flex items-center space-x-8">
                         {navLinks.map((link) => (
                             <a
                                 key={link.name}
                                 href={link.href}
-                                className="text-slate-600 hover:text-blue-600 font-medium transition-colors relative group text-lg"
+                                className={cn(
+                                    "font-medium transition-colors relative group text-lg",
+                                    isScrolled ? "text-slate-600 hover:text-blue-600" : "text-slate-200 hover:text-white"
+                                )}
                             >
                                 {link.name}
                                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
                             </a>
                         ))}
+                        <a
+                            href={CV_URL}
+                            download={CV_FILENAME}
+                            className="px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-500 transition-colors"
+                        >
+                            Descargar CV
+                        </a>
                     </div>
 
                     {/* MOBILE HAMBURGER BUTTON */}
@@ -139,8 +154,8 @@ export const Navbar = () => {
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         aria-label="Toggle menu"
                     >
-                        <span ref={line1Ref} className="block w-6 h-0.5 bg-slate-800 rounded-full origin-center"></span>
-                        <span ref={line2Ref} className="block w-6 h-0.5 bg-slate-800 rounded-full origin-center"></span>
+                        <span ref={line1Ref} className={cn("block w-6 h-0.5 rounded-full origin-center", isScrolled ? "bg-slate-800" : "bg-white")}></span>
+                        <span ref={line2Ref} className={cn("block w-6 h-0.5 rounded-full origin-center", isScrolled ? "bg-slate-800" : "bg-white")}></span>
                     </button>
                 </div>
 
@@ -163,6 +178,15 @@ export const Navbar = () => {
                                     {link.name}
                                 </a>
                             ))}
+                            <a
+                                href={CV_URL}
+                                download={CV_FILENAME}
+                                ref={addToLinksRef}
+                                className="text-lg font-semibold text-white bg-blue-600 hover:bg-blue-500 px-4 py-3 rounded-xl transition-colors block text-center"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                Descargar CV
+                            </a>
                         </div>
                     </div>
                 </div>

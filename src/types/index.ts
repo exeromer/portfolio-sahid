@@ -40,3 +40,11 @@ export interface UserProfile {
   skills: string[];
   status: 'available' | 'busy';
 }
+export interface TimelineItem {
+  id: string;
+  title: string;
+  organization: string;
+  period: string;
+  description: string[];
+  tags?: string[];
+}

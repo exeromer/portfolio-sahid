@@ -1,12 +1,12 @@
 # Sahid Romero - Developer Portfolio (Frontend) 🚀
 
-Live Demo: [http://portfolio-sahid-web-2026.s3-website-us-east-1.amazonaws.com](http://portfolio-sahid-web-2026.s3-website-us-east-1.amazonaws.com)
+Live Demo: [https://cv.nieridev.site/](https://cv.nieridev.site/)
 
 ## 📌 Overview
 This repository contains the frontend implementation of my personal developer portfolio. It is designed with an extreme focus on web performance (Lighthouse FCP < 0.8s), modern 3D UI/UX, and robust End-to-End (E2E) testing.
 
 ## 🛠️ Tech Stack
-* **Framework:** React 18 + TypeScript + Vite
+* **Framework:** React 19 + TypeScript + Vite
 * **Styling:** Tailwind CSS
 * **Animations & 3D:** Three.js, Framer Motion, GSAP
 * **Testing:** Playwright (E2E)
